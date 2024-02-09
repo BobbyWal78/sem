@@ -1,49 +1,25 @@
 @startuml
+left to right direction
 
-actor HR as "HR Advisor"
-
-rectangle Database
-
-rectangle "HR System" {
-    usecase UC4 as "Get salaries
-    by role"
-
-    usecase UCa as "Print salaries"
-
-    HR - UC4
-    UC4 ..> UCa : include
-    UC4 - Database
+actor "HR Advisor" as Employee
+rectangle "Database" {
+  usecase "Generate Salary Report (All Employees)" as SalaryReportAll
+  usecase "Generate Salary Report (Department)" as SalaryReportDepartment
+  usecase "Generate Salary Report (My Department)" as SalaryReportMyDepartment
+  usecase "Generate Salary Report (Given Role)" as SalaryReportGivenRole
+  usecase "Add New Employee" as AddEmployee
+  usecase "View Employee Details" as ViewEmployeeDetails
+  usecase "Update Employee Details" as UpdateEmployeeDetails
+  usecase "Delete Employee Details" as DeleteEmployeeDetails
 }
 
-actor HR as "HR Advisor "
-
-rectangle Database
-
-rectangle "HR System" {
-    usecase UC1 as "Get salaries
-    of All Employees"
-
-    usecase UCa as "Print salaries"
-
-    HR - UC1
-    UC1 ..> UCa : include
-    UC1 - Database
-}
-
-actor HR as "HR Advisor"
-
-rectangle Database
-
-rectangle "HR System" {
-    usecase UC2 as "Get salaries
-    of Employees In A Dept"
-
-    usecase UCa as "Print salaries"
-
-    HR - UC2
-    UC2 ..> UCa : include
-    UC2 - Database
-}
-
+Employee --> SalaryReportAll: Generate Salary Report (All Employees)
+Employee --> SalaryReportDepartment: Generate Salary Report (Department)
+Employee --> SalaryReportMyDepartment: Generate Salary Report (My Department)
+Employee --> SalaryReportGivenRole: Generate Salary Report (Given Role)
+Employee --> AddEmployee: Add New Employee
+Employee --> ViewEmployeeDetails: View Employee Details
+Employee --> UpdateEmployeeDetails: Update Employee Details
+Employee --> DeleteEmployeeDetails: Delete Employee Details
 
 @enduml
