@@ -48,6 +48,10 @@ public class App
             return null;
         }
     }
+    /**
+     * Prints a list of employees.
+     * @param employees The list of employees to print.
+     */
     public void printSalaries(ArrayList<Employee> employees)
     {
         // Print header
