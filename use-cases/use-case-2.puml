@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+
+actor "HR Advisor" as HR
+rectangle "System" {
+  usecase "Produce Department Salary Report" as ProduceDeptReport
+}
+
+HR --> ProduceDeptReport: Produce Department Salary Report
+
+@enduml
