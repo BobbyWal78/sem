@@ -1,0 +1,38 @@
+@startuml
+
+left to right direction
+actor User
+
+rectangle "Population Statistics System" {
+    usecase "Top N Populated Countries (World)" as UC1
+    usecase "Top N Populated Countries (Continent)" as UC2
+    usecase "Top N Populated Countries (Region)" as UC3
+    usecase "Top N Populated Cities (World)" as UC4
+    usecase "Top N Populated Cities (Continent)" as UC5
+    usecase "Top N Populated Cities (Region)" as UC6
+    usecase "Top N Populated Cities (Country)" as UC7
+    usecase "Top N Populated Cities (District)" as UC8
+    usecase "Top N Populated Capital Cities (World)" as UC9
+    usecase "Top N Populated Capital Cities (Continent)" as UC10
+    usecase "Top N Populated Capital Cities (Region)" as UC11
+    usecase "Population Statistics (Continent)" as UC12
+    usecase "Population Statistics (Region)" as UC13
+    usecase "Population Statistics (Country)" as UC14
+}
+
+User --> UC1: Enter N
+User --> UC2: Enter N
+User --> UC3: Enter N
+User --> UC4: Enter N
+User --> UC5: Enter N
+User --> UC6: Enter N
+User --> UC7: Enter N
+User --> UC8: Enter N
+User --> UC9: Enter N
+User --> UC10: Enter N
+User --> UC11: Enter N
+User --> UC12
+User --> UC13
+User --> UC14
+
+@enduml
