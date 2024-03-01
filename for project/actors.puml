@@ -1,0 +1,11 @@
+@startuml
+
+actor User
+actor Admin
+actor "HR Advisor" as HR
+
+User --> (Use Application)
+Admin --> (Manage Application)
+HR --> (Update Application)
+
+@enduml

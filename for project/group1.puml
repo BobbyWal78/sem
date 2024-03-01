@@ -1,0 +1,12 @@
+@startuml
+left to right direction
+actor "HR Advisor" as HR
+rectangle "Group 1 Top N Populate Countries" {
+        usecase "Top N Populated Countries (World)" as UC1
+        usecase "Top N Populated Countries (Continent)" as UC2
+        usecase "Top N Populated Countries (Region)" as UC3
+}
+        HR --> UC1: Enter N
+        HR --> UC2: Enter N
+        HR --> UC3: Enter N
+@enduml

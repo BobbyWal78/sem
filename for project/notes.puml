@@ -1,0 +1,19 @@
+@startuml
+
+User --> (Use Application)
+Admin --> (Manage Application)
+HR --> (Update Application)
+
+note left of User
+  This is a regular user.
+end note
+
+note right of Admin
+  This is an admin user.
+end note
+
+note top of HR
+  This is a HR user.
+end note
+
+@enduml
