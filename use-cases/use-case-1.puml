@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+
+actor "HR Advisor" as HR
+rectangle "System" {
+  usecase "Produce Salary Report (All Employees)" as SalaryReportAll
+}
+
+HR --> SalaryReportAll: Produce All Employees Salary Report
+
+@enduml
