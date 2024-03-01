@@ -1,5 +1,0 @@
-@startuml
-!include actors.puml
-!include notes.puml
-!include group1.puml
-@enduml
