@@ -33,7 +33,7 @@ public class Employee
     /**
      * Employee's current department
      */
-    public Department dept;
+    public Department dept_name;
 
     /**
      * Employee's manager
