@@ -56,9 +56,9 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: BobbyWal78/sem
   build:
-  name: Build Run in Docker and Deploy Release
-  runs-on: ubuntu-20.04
-  steps:
+   name: Build Run in Docker and Deploy Release
+   runs-on: ubuntu-20.04
+   steps:
     - name: Checkout
       uses: actions/checkout@v2
       with:
