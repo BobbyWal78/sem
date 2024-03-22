@@ -144,12 +144,9 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT e.emp_no, e.first_name, e.last_name, "
-                            + "t.title, s.salary "
-                            + "FROM employees AS e "
-                            + "INNER JOIN titles AS t ON e.emp_no = t.emp_no "
-                            + "INNER JOIN salaries as s ON e.emp_no = s.emp_no "
-                            + "WHERE e.emp_no = " + ID;
+                    "SELECT emp_no, first_name, last_name "
+                            + "FROM employees "
+                            + "WHERE emp_no = " + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new employee if valid.
@@ -159,8 +156,7 @@ public class App {
                 emp.emp_no = rset.getInt("emp_no");
                 emp.first_name = rset.getString("first_name");
                 emp.last_name = rset.getString("last_name");
-                emp.title = rset.getString("title");
-                emp.salary = rset.getInt("salary");
+
 
                 return emp;
             } else
