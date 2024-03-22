@@ -14,7 +14,7 @@ public class AppIntegrationTest {
     @BeforeAll
     static void init() {
         app = new App();
-        app.connect("localhost:33060", 30000);
+        app.connect("localhost:33060", 0);
 
     }
 
@@ -26,16 +26,16 @@ public class AppIntegrationTest {
         assertEquals(emp.last_name, "Garigliano");
     }
 
-    @Test
+      @Test
     void testAddEmployee() {
         Employee emp = new Employee();
-        emp.emp_no = 500002;
-        emp.first_name = "Sabrina";
-        emp.last_name = "Walters";
+        emp.emp_no = 500008;
+        emp.first_name = "Kevin";
+        emp.last_name = "Chalmers";
         app.addEmployee(emp);
-        emp = app.getEmployee(500002);
-        assertEquals(emp.emp_no, 50002);
-        assertEquals(emp.first_name, "Sabrina");
-        assertEquals(emp.last_name, "Walters");
+        emp = app.getEmployee(500008);
+        assertEquals(emp.emp_no, 500008);
+        assertEquals(emp.first_name, "Kevin");
+        assertEquals(emp.last_name, "Chalmers");
     }
 }
