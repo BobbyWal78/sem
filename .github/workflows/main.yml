@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - master
-      - develop
-      - lab07
 jobs:
   UnitTests:
     name: Unit Tests
@@ -21,6 +19,13 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: mvn -Dtest=com.napier.sem.AppTest test
+      - name: CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+          # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          directory: ./target/site/jacoco
+          flags: Unit Tests # optional
+          verbose: true # optional (default = false)
 
   IntegrationTests:
     name: Integration Tests
@@ -50,11 +55,11 @@ jobs:
           directory: ./target/site/jacoco
           flags: Integration Tests # optional
           verbose: true # optional (default = false)
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          slug: BobbyWal78/sem
+                     - name: Upload coverage reports to Codecov
+                     uses: codecov/codecov-action@v4.0.1
+                     with:
+                       token: ${{ secrets.CODECOV_TOKEN }}
+                       slug: BobbyWal78/sem
   build:
     name: Build Run in Docker and Deploy Release
     runs-on: ubuntu-20.04
