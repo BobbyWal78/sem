@@ -16,7 +16,7 @@ public class AppIntegrationTest
     static void init()
     {
         app = new App();
-        app.connect("localhost:33060", 0);
+        app.connect("localhost:33060", 10000);
 
     }
 
@@ -28,7 +28,6 @@ public class AppIntegrationTest
         assertEquals(emp.first_name, "Ronghao");
         assertEquals(emp.last_name, "Garigliano");
     }
-
     @Test
     void testAddEmployee()
     {
