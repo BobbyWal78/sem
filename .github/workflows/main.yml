@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - master
+      - develop
+      - release
+      - lab08
 jobs:
   UnitTests:
     name: Unit Tests
@@ -19,13 +22,6 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: mvn -Dtest=com.napier.sem.AppTest test
-      - name: CodeCov
-        uses: codecov/codecov-action@4.0.1
-        with:
-          # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          directory: ./target/site/jacoco
-          flags: Unit Tests # optional
-          verbose: true # optional (default = false)
 
   IntegrationTests:
     name: Integration Tests
@@ -51,17 +47,14 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v4.0.1
         with:
-          # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           directory: ./target/site/jacoco
           flags: Integration Tests # optional
           verbose: true # optional (default = false)
-                     - name: Upload coverage reports to Codecov
-                     uses: codecov/codecov-action@v4.0.1
-                     with:
-                       token: ${{ secrets.CODECOV_TOKEN }}
-                       slug: BobbyWal78/sem
+          slug: BobbyWal78/sem
+
   build:
-    name: Build Run in Docker and Deploy Release
+    name: Build and Start Using docker-compose
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -77,10 +70,3 @@ jobs:
         run: |
           mvn package -DskipTests
           docker-compose up --abort-on-container-exit
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          automatic_release_tag: "latest"
-          files: |
-            ./target/*.jar
