@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - master
-      - develop
-      - release
-      - lab08
 jobs:
   UnitTests:
     name: Unit Tests
@@ -22,6 +19,14 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: mvn -Dtest=com.napier.sem.AppTest test
+      - name: CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
+          directory: ./target/site/jacoco
+          flags: Unit Tests # optional
+          verbose: true # optional (default = false)
+          slug: BobbyWal78/sem
 
   IntegrationTests:
     name: Integration Tests
@@ -45,14 +50,13 @@ jobs:
           docker rm employees
           docker image rm database
       - name: CodeCov
-        uses: codecov/codecov-action@v4.0.1
+        uses: codecov/codecov-action@v2
         with:
-          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
           directory: ./target/site/jacoco
           flags: Integration Tests # optional
           verbose: true # optional (default = false)
           slug: BobbyWal78/sem
-
   build:
     name: Build Run in Docker and Deploy Release
     runs-on: ubuntu-20.04
@@ -77,5 +81,3 @@ jobs:
           automatic_release_tag: "latest"
           files: |
             ./target/*.jar
-  
-    
